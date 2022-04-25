@@ -21,7 +21,8 @@ class Api::V1::AuctionsController < Api::ApplicationController
         render(json: auctions, each_serializer: AuctionCollectionSerializer)
     end
     def show
-        render(json: @auction)
+        bids = @auction.bids
+        render(json: {auction: @auction, bids: bids})
     end
     def update
         if @auction.update(auction_params)

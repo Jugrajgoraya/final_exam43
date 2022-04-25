@@ -7,10 +7,11 @@ import "../App.css"
 export default function AuctionShowPage(props) {
     
     const [auction, setAuction] = useState(null)
+    const [bids, setBids] = useState([])
 
     useEffect(()=>{
-        Auction.show(props.match.params.id).then(fetchedAuction =>{
-            setAuction(fetchedAuction)
+        Auction.show(props.match.params.id).then(data =>{
+            setAuction(data)
             console.log(auction);
         })
     },[])
